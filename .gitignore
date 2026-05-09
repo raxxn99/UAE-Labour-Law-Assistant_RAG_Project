@@ -1,0 +1,24 @@
+# Virtual environment
+venv/
+env/
+*.pyc
+__pycache__/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project files
+data/raw/
+chroma_db/
+.env
+*.log
+
+# API Keys (NEVER commit!)
+*.key
+*_key.txt
