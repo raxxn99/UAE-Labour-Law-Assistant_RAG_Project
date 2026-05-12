@@ -18,7 +18,7 @@ A Retrieval-Augmented Generation (RAG) system that answers questions about UAE L
 
 ## Installation
 
-1. Clone: git clone [https://github.com/[yourname]/uae-labour-rag.git](https://github.com/raxxn99/UAE-Labour-Law-Assistant_RAG_Project.git)
+1. Clone: git clone [https://github.com/raxxn99/UAE-Labour-Law-Assistant_RAG_Project.git]
 2. Create venv: python -m venv venv
 3. Activate: source venv/bin/activate (or venv\Scripts\activate on Windows)
 4. Install: pip install -r requirements.txt
