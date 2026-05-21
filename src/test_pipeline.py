@@ -1,7 +1,7 @@
 import os
 import sys
 from pathlib import Path
-
+import time
 # =========================================================
 # FIND PROJECT ROOT SAFELY
 # =========================================================
@@ -135,5 +135,6 @@ for i, q in enumerate(questions, 1):
         print(f"❌ Error on Q{i}: {e}")
 
     print("-" * 60)
+    time.sleep(10)  # Sleep between questions to avoid hitting API rate limits
 
 print("\n✅ Test complete")

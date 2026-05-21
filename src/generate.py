@@ -1,6 +1,6 @@
 import os
 from typing import Dict, List, Any
-
+import time
 from dotenv import load_dotenv
 from google import genai
 
@@ -13,7 +13,13 @@ from retrieval import retrieve
 
 load_dotenv()
 
-LLM_MODEL = "gemini-2.5-flash"
+LLM_MODELS = [
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite"
+]
+
+MAX_RETRIES_PER_MODEL = 3
+RETRY_WAIT_SECONDS = 8
 TOP_K = 5
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
@@ -95,18 +101,57 @@ def generate_answer(question: str, context_chunks: List[Dict[str, Any]]) -> Dict
 
     client = genai.Client(api_key=GEMINI_API_KEY)
 
-    response = client.models.generate_content(
-        model=LLM_MODEL,
-        contents=prompt
-    )
+    last_error = None
+    used_model = None
+    answer = None
 
-    answer = response.text
+    for model_name in LLM_MODELS:
+        for attempt in range(1, MAX_RETRIES_PER_MODEL + 1):
+            try:
+                print(f"Trying Gemini model: {model_name} | Attempt {attempt}")
 
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=prompt
+                )
+
+                answer = response.text
+                used_model = model_name
+                break
+
+            except Exception as e:
+                last_error = e
+                error_text = str(e)
+
+                if (
+                    "503" in error_text
+                    or "UNAVAILABLE" in error_text
+                    or "429" in error_text
+                    or "RESOURCE_EXHAUSTED" in error_text
+                ):
+                    print(
+                        f"⚠️ Gemini is busy for {model_name}. "
+                        f"Waiting {RETRY_WAIT_SECONDS} seconds then retrying..."
+                    )
+                    time.sleep(RETRY_WAIT_SECONDS)
+                    continue
+
+                raise e
+
+        if answer is not None:
+            break
+
+    if answer is None:
+        raise RuntimeError(
+            "All Gemini models failed because the API is currently busy. "
+            "Please run the same question again after a few minutes.\n"
+            f"Last error: {last_error}"
+        )
     return {
         "question": question,
         "answer": answer,
         "context_chunks": context_chunks,
-        "model": LLM_MODEL,
+        "model": used_model,
         "top_k": TOP_K,
         "prompt_used": prompt
     }

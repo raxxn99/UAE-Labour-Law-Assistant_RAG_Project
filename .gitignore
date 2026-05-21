@@ -16,7 +16,7 @@ Thumbs.db
 # Project files
 data/raw/
 chroma_db/
-.env
+.env.example
 *.log
 
 # API Keys (NEVER commit!)
