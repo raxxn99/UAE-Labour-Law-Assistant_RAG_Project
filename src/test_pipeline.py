@@ -1,40 +1,98 @@
 import os
 import sys
+from pathlib import Path
 
-# ── Fix all paths ──────────────────────────────────────────────
-# Get the project root folder (wherever this file is saved)
-ROOT = os.path.dirname(os.path.abspath(__file__))
-SRC  = os.path.join(ROOT, 'src')
-sys.path.insert(0, SRC)
+# =========================================================
+# FIND PROJECT ROOT SAFELY
+# =========================================================
 
-# Fix ChromaDB path — must be absolute so it always finds the db
-os.chdir(ROOT)
+CURRENT_FILE_DIR = Path(__file__).resolve().parent
 
-# ── Load .env file ─────────────────────────────────────────────
+# Case 1: test_pipeline.py is in project root
+if (CURRENT_FILE_DIR / "src").exists():
+    PROJECT_ROOT = CURRENT_FILE_DIR
+
+# Case 2: test_pipeline.py is inside src/
+elif (CURRENT_FILE_DIR.parent / "src").exists():
+    PROJECT_ROOT = CURRENT_FILE_DIR.parent
+
+else:
+    raise RuntimeError(
+        "Could not find project root. Make sure the project has a src/ folder."
+    )
+
+SRC_DIR = PROJECT_ROOT / "src"
+
+# Add src/ to Python path
+sys.path.insert(0, str(SRC_DIR))
+
+# Change working directory to project root
+os.chdir(PROJECT_ROOT)
+
+print(f"✅ Project root: {PROJECT_ROOT}")
+print(f"✅ Source folder: {SRC_DIR}")
+
+
+# =========================================================
+# LOAD .ENV FILE
+# =========================================================
+
 from dotenv import load_dotenv
-load_dotenv(os.path.join(ROOT, '.env'))
 
-# ── Check API key exists ───────────────────────────────────────
+ENV_PATH = PROJECT_ROOT / ".env"
+
+if not ENV_PATH.exists():
+    print("❌ .env file not found")
+    print(f"Expected location: {ENV_PATH}")
+    print("Create .env in the project root with:")
+    print("GEMINI_API_KEY=your-key-here")
+    sys.exit(1)
+
+load_dotenv(dotenv_path=ENV_PATH, override=True)
+
 api_key = os.getenv("GEMINI_API_KEY")
+
 if not api_key:
     print("❌ GEMINI_API_KEY not found in .env file")
-    print("   Create a .env file in the project root with:")
-    print("   GEMINI_API_KEY=your-key-here")
+    print(f"Checked file: {ENV_PATH}")
+    print("Your .env should contain:")
+    print("GEMINI_API_KEY=your-key-here")
     sys.exit(1)
-else:
-    print("✅ GEMINI_API_KEY found")
 
-# ── Check ChromaDB exists ──────────────────────────────────────
+if api_key.startswith("="):
+    print("❌ GEMINI_API_KEY starts with an extra '='")
+    print("Fix .env from:")
+    print("GEMINI_API_KEY==AIza...")
+    print("to:")
+    print("GEMINI_API_KEY=AIza...")
+    sys.exit(1)
+
+print("✅ GEMINI_API_KEY found")
+print(f"Key starts with: {api_key[:6]}")
+print(f"Key length: {len(api_key)}")
+
+
+# =========================================================
+# CHECK CHROMADB
+# =========================================================
+
 import chromadb
+
 try:
-    client     = chromadb.PersistentClient(path='chroma_db')
-    collection = client.get_collection('uae_labour_law')
+    client = chromadb.PersistentClient(path="chroma_db")
+    collection = client.get_collection("uae_labour_law")
     print(f"✅ ChromaDB loaded — {collection.count()} chunks available")
 except Exception as e:
     print(f"❌ ChromaDB error: {e}")
+    print("Make sure Rana has run:")
+    print("python src/ingest.py")
     sys.exit(1)
 
-# ── Import pipeline ────────────────────────────────────────────
+
+# =========================================================
+# IMPORT PIPELINE
+# =========================================================
+
 try:
     from retrieval import retrieve
     print("✅ retrieval.py imported")
@@ -49,7 +107,11 @@ except Exception as e:
     print(f"❌ generate.py import failed: {e}")
     sys.exit(1)
 
-# ── Run test questions ─────────────────────────────────────────
+
+# =========================================================
+# RUN TEST QUESTIONS
+# =========================================================
+
 questions = [
     "What is the minimum annual leave in the UAE?",
     "How is end of service gratuity calculated?",
@@ -58,18 +120,20 @@ questions = [
     "How can an employee file a labour complaint?"
 ]
 
-print("\n" + "="*60)
+print("\n" + "=" * 60)
 print("  RUNNING FULL PIPELINE TEST")
-print("="*60)
+print("=" * 60)
 
 for i, q in enumerate(questions, 1):
     print(f"\nQ{i}: {q}")
-    print("-"*60)
+    print("-" * 60)
+
     try:
         result = answer_question(q)
-        print(result['answer'])
+        print(result["answer"])
     except Exception as e:
         print(f"❌ Error on Q{i}: {e}")
-    print("-"*60)
+
+    print("-" * 60)
 
 print("\n✅ Test complete")
