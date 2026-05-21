@@ -17,7 +17,6 @@ Thumbs.db
 data/raw/
 chroma_db/
 .env
-.env.example
 *.log
 
 # API Keys (NEVER commit!)
