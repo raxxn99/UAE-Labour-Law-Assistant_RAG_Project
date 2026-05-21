@@ -60,7 +60,7 @@ This project uses the **Gemini API** (free).
 1. Go to https://aistudio.google.com/apikey
 2. Sign in with your Google account
 3. Click **"Create API Key"** and copy it
-4. in `.env` file in the project root and add:
+4. go to `.env` file in the project root and add:
 
 ```
 GEMINI_API_KEY=your-key-here
