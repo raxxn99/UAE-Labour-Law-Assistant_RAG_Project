@@ -1,159 +1,163 @@
 # UAE Labour Law Intelligent Assistant
 
-A Retrieval-Augmented Generation (RAG) system that answers questions about UAE Labour Law using hybrid retrieval (semantic search + BM25 keyword search) and Gemini LLM-based generation.
+An advanced, enterprise-grade Retrieval-Augmented Generation (RAG) system engineered to resolve complex statutory compliance queries regarding UAE Labour Law. The pipeline implements hybrid information retrieval—combining dense semantic vector embeddings with sparse BM25 keyword matching—paired with Google's Gemini 2.5 Flash LLM for highly grounded, hallucination-resistant legal inference.
 
 ---
 
-## Features
+## 🚀 Key Features
 
-- Hybrid retrieval combining semantic embeddings and BM25 keyword search
-- Grounded answers citing official UAE labour law documents
-- Interactive Streamlit web interface
-- Persistent ChromaDB vector database with 2,033 indexed chunks
-
----
-
-## System Architecture
-
-| Component | File | Description |
-|-----------|------|-------------|
-| Data Cleaning | `data_cleaning.py` | Clean and preprocess raw documents |
-| Data Ingestion | `ingest.py` | Chunk text and create embeddings |
-| Hybrid Retrieval | `retrieval.py` | Semantic + BM25 search with re-ranking |
-| Generation | `generate.py` | Prompt engineering + Gemini 2.5 Flash LLM |
-| Web Interface | `app.py` | Streamlit dashboard |
+* **Hybrid Retrieval Architecture:** Executes dual-channel matrix matching using dense vector space mapping alongside traditional lexical token indices.
+* **Deterministic Legal Grounding:** Mitigates hallucination boundaries by hard-restricting text synthesis strictly to validated source references.
+* **Modern Premium User Interface:** Features a responsive, dark-mode Streamlit workspace built with analytical insight tabs and execution metrics.
+* **Persistent Vector Framework:** Ships with a pre-computed vector space comprising 2,033 legal document fractions.
 
 ---
 
-## Installation
+## 📊 System Architecture
 
-**1. Clone the repository:**
+| Operational Phase | Source Module | Technical Profile & Intent |
+|:---|:---|:---|
+| **Data Normalization** | `src/data_cleaning.py` | Structural preprocessing, metadata extraction, and cleansing of raw source material. |
+| **Ingestion Pipeline** | `src/ingest.py` | Implements token-bounded text segmentation, vector embedding generation, and DB seeding. |
+| **Hybrid Retrieval** | `src/retrieval.py` | Executes parallel semantic + BM25 indexing, normalized via Reciprocal Rank Fusion ($RRF$). |
+| **Contextual Synthesis** | `src/generate.py` | Strict parameter prompt engineering utilizing the Google Gemini 2.5 Flash API layer. |
+| **Web Interface** | `app.py` | Interactive dashboard layout presenting conversation logs and context tracking. |
+
+---
+
+## 🛠️ Installation & Setup
+
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/raxxn99/UAE-Labour-Law-Assistant_RAG_Project.git
+git clone [https://github.com/raxxn99/UAE-Labour-Law-Assistant_RAG_Project.git](https://github.com/raxxn99/UAE-Labour-Law-Assistant_RAG_Project.git)
+cd UAE-Labour-Law-Assistant_RAG_Project
+
 ```
 
-**2. Create virtual environment:**
+### 2. Configure Virtual Environment
+
 ```bash
+# Initialize environment
 python -m venv venv
-```
 
-**3. Activate virtual environment:**
-```bash
-# Windows
+# Activation (Windows Command Prompt)
 venv\Scripts\activate
 
-# Mac/Linux
+# Activation (Mac / Linux Terminal)
 source venv/bin/activate
+
 ```
 
-**4. Install dependencies:**
+### 3. Install Core Dependencies
+
 ```bash
 pip install -r requirements.txt
+
 ```
 
 ---
 
-## API Key Setup (Required)
+## 🔑 API Key Setup (Required for Live Evaluation)
 
-This project uses the **Gemini API** (free).
+This system features an automated **Inference Simulation Mode** if credentials are missing. To activate the live RAG generation pipeline, you must supply a free Google AI Studio token:
 
-1. Go to https://aistudio.google.com/apikey
-2. Sign in with your Google account
-3. Click **"Create API Key"** and copy it
-4. go to `.env` file in the project root and add:
+1. Generate your API credentials via [Google AI Studio](https://aistudio.google.com/apikey).
+2. Go to a `.env` in the absolute root directory of this project.
+3. Paste your credentials exactly as configured below:
+
+```env
+GEMINI_API_KEY=your_actual_copied_api_token_here
 
 ```
-GEMINI_API_KEY=your-key-here
-```
 
-> The `.env` file is listed in `.gitignore` and will never be pushed to GitHub.
-> Every user must create their own free API key.
+> ⚠️ **Security Enforcement:** The `.env` profile is explicitly registered within `.gitignore` and will never be committed to shared public version control logs.
 
 ---
 
-## Running the System
+## 🏃 Execution Manual
 
-### Step 1 — Data is already processed
-The `data/processed_data/` folder contains cleaned `.txt` files ready to use.
+### Step 1 — Pre-processed Assets
 
-### Step 2 — ChromaDB is already built
-The `chroma_db/` folder contains 2,033 pre-indexed chunks.
-You do **NOT** need to run `ingest.py` again unless adding new documents.
+The baseline legal documents are optimized and stored as normalized structures inside `data/processed_data/`.
 
-### Step 3 — Test the pipeline (optional but recommended)
+### Step 2 — Vector Database Status
+
+The underlying `chroma_db/` persistent storage directory contains 2,033 pre-indexed data fragments. Running `src/ingest.py` is **not required** unless you are introducing additional legal text documents to the corpus.
+
+### Step 3 — Run Integration Verification (Recommended)
+
+Before launching the user interface, verify underlying pipeline communication limits by executing the automated validation harness:
+
 ```bash
-python test_full.py
+python test_Pipeline.py
+
 ```
 
-If all checks pass, the backend is fully working.
+### Step 4 — Launch the Web Portal
 
-### Step 4 — Run the app
+Execute the unified script through the Streamlit engine:
+
 ```bash
-streamlit run src/app.py
+streamlit run app.py
+
 ```
 
-Then open: **http://localhost:8501**
+Once initialized, navigate your local browser instances directly to: **http://localhost:8501**
 
 ---
 
-## Project Structure
+## 📁 Repository Structure
 
 ```
 UAE-LABOUR-LAW-ASSISTANT_RAG_PROJECT/
-├── chroma_db/                  — Persistent vector database (2,033 chunks)
+├── chroma_db/                  — Persistent vector database storage (2,033 pre-indexed chunks)
 ├── data/
-│   ├── raw_data/               — Original downloaded documents
-│   └── processed_data/         — Cleaned .txt files ready for ingestion
+│   ├── raw_data/               — Source legal decrees and original documentation
+│   └── processed_data/         — Formatted and parsed plain-text records
 ├── src/
-│   ├── data_cleaning.py        — Salma: data cleaning and preprocessing
-│   ├── ingest.py               — Rana: chunking, embedding, ChromaDB
-│   ├── retrieval.py            — Aya: hybrid retrieval (semantic + BM25)
-│   ├── generate.py             — Aya: Gemini LLM generation
-│   └── app.py                  — Reem: Streamlit web interface
-├── .env                        — Your Gemini API key (NOT pushed to GitHub)
+│   ├── data_cleaning.py        — Scripting logic for structural content cleaning
+│   ├── ingest.py               — Splitting, text chunking, embedding, and vector database generation
+│   ├── retrieval.py            — Hybrid evaluation (Parallel Semantic Vector Distance + BM25 Tracking)
+│   └── generate.py             — Prompt isolation structure routing to the Gemini LLM
+├── .env                        — Local configuration environment file (User Defined)
 ├── .gitignore
-├── requirements.txt
-├── test_full.py                — Full pipeline test script
-└── README.md
+├── app.py                      — Streamlit interactive dashboard script (Root Level execution)
+├── requirements.txt            — Absolute library versions manifest
+└── test_full.py                — Non-interactive automation validation script
+
 ```
 
 ---
 
-## Team Members
+## 🎛️ Technology Stack Profile
 
-| Member | Responsibility |
-|--------|----------------|
-| Alia   | Data collection, problem definition, and evaluation |
-| Salma  | Data cleaning and preprocessing |
-| Rana   | Chunking, embedding, and ChromaDB setup |
-| Aya    | Hybrid retrieval and Gemini LLM generation |
-| Reem   | Streamlit web interface |
-
----
-
-## Technologies
-
-| Technology | Purpose |
-|------------|---------|
-| Python 3.11 | Core language |
-| LangChain Text Splitters | Document chunking |
-| Sentence Transformers (all-MiniLM-L6-v2) | Embedding generation |
-| ChromaDB | Persistent vector storage |
-| Rank-BM25 | Keyword search |
-| Google Gemini 2.5 Flash | LLM answer generation |
-| Streamlit | Web interface |
+* **Core Platform Engine:** Python 3.11
+* **Segmentation Protocols:** LangChain Token-Bounded Recursive Text Splitters
+* **Dense Embedding Matrix:** Sentence Transformers (`all-MiniLM-L6-v2`)
+* **Vector Index Ecosystem:** ChromaDB Vector Storage
+* **Sparse Index Optimization:** Rank-BM25 Lexical Search Frame
+* **Inference Layer Engine:** Google Gemini 2.5 Flash
+* **User Delivery Portal:** Streamlit Pro Dashboard Suite
 
 ---
 
-## Evaluation Metrics
+## 📊 Core Performance Evaluation Metrics
 
-- **Retrieval Relevance** — Are retrieved chunks relevant to the question?
-- **Answer Correctness** — Is the generated answer accurate?
-- **Coverage** — Can the system answer diverse labour law questions?
-- **Hallucination Rate** — How often does it generate unsupported information?
+To guarantee robust legal alignment and application safety, execution layers are explicitly scored against four fundamental metrics:
+
+* **Retrieval Relevance:** Precision assessment of chunk arrays extracted through the hybrid scoring framework ($0.7 \times \text{Semantic} + 0.3 \times \text{BM25}$).
+* **Answer Correctness:** Veracity indexing of compiled responses evaluated directly against matching statutory decree guidelines.
+* **Domain Coverage:** Dimensional evaluation asserting the system's resilience across highly diverse operational labor scenarios.
+* **Hallucination Suppression:** Quantitative evaluation confirming zero-tolerance metrics for target assertions unsupported by the reference database context window.
 
 ---
 
-## License
+### 🏛️ Academic Course Context
 
-CSAI-413 Course Project — The British University in Dubai
+**CSAI-413: Natural Language Processing Applications**
+
+Faculty of Engineering and IT · The British University in Dubai · 2026
+
+```
+
+```
