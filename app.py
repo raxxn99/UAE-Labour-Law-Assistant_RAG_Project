@@ -1,20 +1,31 @@
 """
 app.py - UAE Labour Law RAG System
-Modern Premium UI Version - Optimized with Example Questions
+Updated Version:
+1. Sample queries are inside the Live Chat tab.
+2. Each answer keeps its own retrieved chunks.
+3. Removed empty box under sample query text.
+4. Sample query buttons now have equal height.
+5. Replaced unanswered arbitrary dismissal question.
 """
 
 import streamlit as st
 import time
-from datetime import datetime
 import sys
 from pathlib import Path
+import os
+
+# Reduce noisy logs
+os.environ["TRANSFORMERS_NO_ADVISORY_WARNINGS"] = "1"
+os.environ["STREAMLIT_SERVER_FILE_WATCHER_TYPE"] = "none"
+
+try:
+    from transformers.utils import logging
+    logging.set_verbosity_error()
+except Exception:
+    pass
 
 # Add src folder to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
-
-# ─────────────────────────────────────────────────────────────
-# PAGE CONFIG
-# ─────────────────────────────────────────────────────────────
 
 st.set_page_config(
     page_title="UAE Labour Law Assistant",
@@ -24,7 +35,7 @@ st.set_page_config(
 )
 
 # ─────────────────────────────────────────────────────────────
-# PREMIUM UI CSS
+# CSS
 # ─────────────────────────────────────────────────────────────
 
 st.markdown("""
@@ -62,11 +73,7 @@ section[data-testid="stSidebar"] * {
 }
 
 .hero-banner {
-    background: linear-gradient(
-        135deg,
-        rgba(99, 102, 241, 0.12),
-        rgba(20, 184, 166, 0.08)
-    );
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(20, 184, 166, 0.08));
     border: 1px solid rgba(255, 255, 255, 0.07);
     backdrop-filter: blur(24px);
     border-radius: 24px;
@@ -118,14 +125,6 @@ section[data-testid="stSidebar"] * {
     padding: 1.5rem;
     text-align: center;
     backdrop-filter: blur(12px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.metric-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(20, 184, 166, 0.3);
-    background: rgba(255, 255, 255, 0.05);
 }
 
 .metric-value {
@@ -163,8 +162,8 @@ section[data-testid="stSidebar"] * {
     color: #e2e8f0;
     padding: 1.4rem;
     border-radius: 18px 18px 18px 4px;
-    margin-bottom: 1.2rem;
-    max-width: 85%;
+    margin-bottom: 0.7rem;
+    max-width: 90%;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -218,51 +217,17 @@ section[data-testid="stSidebar"] * {
     letter-spacing: 0.05em;
 }
 
-.stTabs [data-baseweb="tab-list"] {
-    gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 0.4rem;
-    border-radius: 14px;
-    border-bottom: none;
-}
-
-.stTabs [data-baseweb="tab"] {
-    border-radius: 10px;
-    color: #94a3b8;
-    padding: 0.6rem 1.2rem;
-    font-weight: 600;
-    transition: all 0.2s ease;
-}
-
-.stTabs [aria-selected="true"] {
-    background: rgba(255, 255, 255, 0.07) !important;
-    color: #2dd4bf !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.stButton > button {
+div.stButton > button {
     background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%) !important;
     color: white !important;
     border: none !important;
     border-radius: 12px !important;
     font-weight: 600 !important;
-    padding: 0.6rem 1.5rem !important;
-    transition: all 0.3s opacity;
-}
-
-.stButton > button:hover {
-    opacity: 0.95;
-}
-
-.stChatInput {
-    border-radius: 16px !important;
-}
-
-.stChatInput input {
-    background: rgba(255, 255, 255, 0.05) !important;
-    color: #f8fafc !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-radius: 14px !important;
+    padding: 0.6rem 1.2rem !important;
+    min-height: 72px !important;
+    width: 100% !important;
+    white-space: normal !important;
+    line-height: 1.35 !important;
 }
 
 .architecture-box {
@@ -287,33 +252,11 @@ section[data-testid="stSidebar"] * {
     font-size: 1.1rem;
     margin-right: 0.5rem;
 }
-
-.example-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 12px;
-    padding: 1rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-.example-card:hover {
-    background: rgba(99, 102, 241, 0.08);
-    border-color: rgba(99, 102, 241, 0.3);
-}
-
-::-webkit-scrollbar {
-    width: 6px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 999px;
-}
 </style>
 """, unsafe_allow_html=True)
 
 # ─────────────────────────────────────────────────────────────
-# SESSION STATE INITIALIZATION
+# SESSION STATE
 # ─────────────────────────────────────────────────────────────
 
 if "messages" not in st.session_state:
@@ -325,26 +268,27 @@ if "question_count" not in st.session_state:
 if "avg_response_time" not in st.session_state:
     st.session_state.avg_response_time = 0.0
 
-if "active_question" not in st.session_state:
-    st.session_state.active_question = None
 
 # ─────────────────────────────────────────────────────────────
-# RAG PIPELINE ENGINE MOCKUP / CONNECTOR
+# RAG PIPELINE
 # ─────────────────────────────────────────────────────────────
 
 def get_rag_answer(question: str):
     try:
         from generate import answer_question
         return answer_question(question), False
-    except Exception:
+    except Exception as e:
         return {
             "answer": f"""
 Based on the indexed legal parameters of the UAE Labour Law, here is the analysis for your query:
 
 **"{question}"**
 
-1. **Regulatory Overview:** In alignment with Federal Decree-Law No. 33 of 2021, statutory compliance parameters regulate worker protections, explicitly managing operational limits, notice terms, and core corporate employer liabilities.
-2. **Key Determinations:** Implementation guidelines set forth via executive decrees outline structured processing channels. Any local discrepancies should refer to formal provisions under official human resource ministerial controls (MOHRE).
+1. **Regulatory Overview:** In alignment with Federal Decree-Law No. 33 of 2021, statutory compliance parameters regulate worker protections, notice terms, contracts, and employer liabilities.
+2. **Key Determinations:** Implementation guidelines outline structured processing channels. Any local discrepancy should refer to official provisions under MOHRE.
+
+⚠️ Note: This fallback answer appeared because the real generation pipeline raised an error:
+`{str(e)}`
 """,
             "context_chunks": [
                 {
@@ -353,23 +297,84 @@ Based on the indexed legal parameters of the UAE Labour Law, here is the analysi
                     "hybrid_score": 0.96
                 },
                 {
-                    "text": "Cabinet Resolution No. 1 of 2022 handling execution parameters clarifies explicit calculations governing leave allocations and standard processing protocols.",
+                    "text": "Cabinet Resolution No. 1 of 2022 clarifies execution parameters and standard processing protocols.",
                     "source": "Cabinet Resolution No. 1 of 2022",
                     "hybrid_score": 0.89
                 }
             ]
         }, True
 
+
+def render_chunks(chunks):
+    if not chunks:
+        st.markdown(
+            "<div style='color:#64748b;'>No retrieved chunks available for this answer.</div>",
+            unsafe_allow_html=True
+        )
+        return
+
+    for i, chunk in enumerate(chunks, 1):
+        score = chunk.get("hybrid_score", 0)
+        score_percentage = int(score * 100) if score <= 1 else int(score)
+        source = chunk.get("source", "Unknown source")
+        text = chunk.get("text", "")
+
+        st.markdown(f"""
+        <div class="chunk-card">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span class="chunk-label">DOCUMENT CHUNK #{i}</span>
+                <span class="chunk-score">Match Rate: {score_percentage}%</span>
+            </div>
+            <div style="color:#64748b; margin-top:0.4rem; font-size:0.8rem; font-weight:600;">
+                📍 Source Reference: {source}
+            </div>
+            <div class="chunk-text">
+                "{text}"
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+
+def process_question(question: str):
+    st.session_state.messages.append({
+        "role": "user",
+        "content": question
+    })
+
+    with st.spinner("Executing retrieval and generation pipeline..."):
+        start_timer = time.time()
+        pipeline_result, used_fallback = get_rag_answer(question)
+        elapsed = time.time() - start_timer
+
+    current_count = st.session_state.question_count
+    st.session_state.avg_response_time = (
+        (st.session_state.avg_response_time * current_count + elapsed) / (current_count + 1)
+    )
+    st.session_state.question_count += 1
+
+    st.session_state.messages.append({
+        "role": "assistant",
+        "content": pipeline_result.get("answer", "No answer generated."),
+        "chunks": pipeline_result.get("context_chunks", []),
+        "response_time": elapsed,
+        "used_fallback": used_fallback
+    })
+
+    st.rerun()
+
+
 # ─────────────────────────────────────────────────────────────
-# SIDEBAR NAVIGATION
+# SIDEBAR
 # ─────────────────────────────────────────────────────────────
 
 with st.sidebar:
     st.markdown("""
     <div style="text-align:center; padding:1.5rem 0 2rem 0;">
         <div style="font-size:3.2rem; margin-bottom: 0.5rem;">⚖️</div>
-        <div style="font-size:1.4rem; font-weight:800; letter-spacing:-0.01em;">UAE Labour Law</div>
-        <div style="color:#2dd4bf; font-size:0.75rem; font-weight:700; margin-top:0.3rem; letter-spacing:0.1em;">HYBRID RAG INTERACTIVE</div>
+        <div style="font-size:1.4rem; font-weight:800;">UAE Labour Law</div>
+        <div style="color:#2dd4bf; font-size:0.75rem; font-weight:700; margin-top:0.3rem; letter-spacing:0.1em;">
+            HYBRID RAG INTERACTIVE
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -395,11 +400,13 @@ with st.sidebar:
 
     if st.button("🗑️ Clear Active Session", use_container_width=True):
         st.session_state.messages = []
-        st.session_state.active_question = None
+        st.session_state.question_count = 0
+        st.session_state.avg_response_time = 0.0
         st.rerun()
 
+
 # ─────────────────────────────────────────────────────────────
-# MAIN HERO INTERFACE DISPLAY
+# HERO
 # ─────────────────────────────────────────────────────────────
 
 st.markdown("""
@@ -411,14 +418,15 @@ st.markdown("""
         UAE Labour Law <span>Intelligent Portal</span>
     </div>
     <div class="hero-subtitle">
-        Deploy advanced AI evaluation infrastructure to query complex institutional provisions. 
-        Leverage hybrid keyword matching optimized alongside vector search calculations to eliminate alignment risks.
+        Query UAE labour law provisions using a hybrid RAG pipeline that combines vector retrieval,
+        BM25 keyword search, legal evidence chunks, and Gemini-based answer generation.
     </div>
 </div>
 """, unsafe_allow_html=True)
 
+
 # ─────────────────────────────────────────────────────────────
-# CORE METRIC MATRICES
+# METRICS
 # ─────────────────────────────────────────────────────────────
 
 m_col1, m_col2, m_col3, m_col4 = st.columns(4)
@@ -440,15 +448,11 @@ with m_col2:
     """, unsafe_allow_html=True)
 
 with m_col3:
-    rt_display = (
-        f"{st.session_state.avg_response_time:.2f}s"
-        if st.session_state.avg_response_time > 0
-        else "—"
-    )
+    rt_display = f"{st.session_state.avg_response_time:.2f}s" if st.session_state.avg_response_time > 0 else "—"
     st.markdown(f"""
     <div class="metric-card">
         <div class="metric-value">{rt_display}</div>
-        <div class="metric-label">Latency Evaluation</div>
+        <div class="metric-label">Average Latency</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -462,219 +466,170 @@ with m_col4:
 
 st.markdown("<br>", unsafe_allow_html=True)
 
+
 # ─────────────────────────────────────────────────────────────
-# NAVIGATION TABS
+# TABS
 # ─────────────────────────────────────────────────────────────
 
-chat_tab, examples_tab, code_tab, about_tab = st.tabs([
+chat_tab, code_tab, about_tab = st.tabs([
     "💬 Live Chat Interface",
-    "💡 Sample Queries",
     "📊 Pipeline Architecture & Logic",
     "ℹ️ RAG Specifications"
 ])
 
+
 # ─────────────────────────────────────────────────────────────
-# TAB: CHAT INTERFACE
+# CHAT TAB
 # ─────────────────────────────────────────────────────────────
 
 with chat_tab:
-    left, right = st.columns([3, 2])
+    st.markdown("### 💡 Sample Queries")
+    st.markdown(
+        "<p style='color:#94a3b8;'>Choose a sample question or type your own question below.</p>",
+        unsafe_allow_html=True
+    )
 
-    with left:
-        # Display past message streams safely
-        for msg in st.session_state.messages:
-            if msg["role"] == "user":
-                st.markdown(f'<div class="chat-bubble-user">{msg["content"]}</div>', unsafe_allow_html=True)
-            else:
-                formatted_bot_content = msg["content"].replace("\n", "<br>")
-                st.markdown(f"""
-                <div class="chat-bubble-bot">
-                    <div style="font-weight:700; margin-bottom:0.6rem; color:#2dd4bf; font-size: 0.9rem;">
-                        ⚖️ LEGAL INFERENCE SYSTEM RESPONSE
-                    </div>
-                    <div>{formatted_bot_content}</div>
+    ex_col1, ex_col2, ex_col3 = st.columns(3)
+    sample_clicked = None
+
+    with ex_col1:
+        st.markdown(
+            "<div style='color:#2dd4bf; font-weight:700; margin-bottom:0.5rem;'>📋 Leave & Gratuity</div>",
+            unsafe_allow_html=True
+        )
+        if st.button("How is end-of-service gratuity calculated under the new law?", use_container_width=True):
+            sample_clicked = "How is end-of-service gratuity calculated under the new law?"
+
+        if st.button("What are the rules for annual leave pay when resigning?", use_container_width=True):
+            sample_clicked = "What are the rules for annual leave pay when resigning?"
+
+    with ex_col2:
+        st.markdown(
+            "<div style='color:#4f46e5; font-weight:700; margin-bottom:0.5rem;'>💼 Employment Contracts</div>",
+            unsafe_allow_html=True
+        )
+        if st.button("What is the maximum duration for a limited contract?", use_container_width=True):
+            sample_clicked = "What is the maximum duration for a limited contract?"
+
+        if st.button("Are non-compete clauses legally binding in the UAE?", use_container_width=True):
+            sample_clicked = "Are non-compete clauses legally binding in the UAE?"
+
+    with ex_col3:
+        st.markdown(
+            "<div style='color:#a5b4fc; font-weight:700; margin-bottom:0.5rem;'>⚠️ Termination Rules</div>",
+            unsafe_allow_html=True
+        )
+        if st.button("What is the legal minimum notice period for termination?", use_container_width=True):
+            sample_clicked = "What is the legal minimum notice period for termination?"
+
+        if st.button("When can an employer dismiss a worker without notice?", use_container_width=True):
+            sample_clicked = "When can an employer dismiss a worker without notice?"
+
+    if sample_clicked:
+        process_question(sample_clicked)
+
+    st.markdown("### 💬 Conversation")
+
+    for msg in st.session_state.messages:
+        if msg["role"] == "user":
+            st.markdown(
+                f'<div class="chat-bubble-user">{msg["content"]}</div>',
+                unsafe_allow_html=True
+            )
+
+        elif msg["role"] == "assistant":
+            formatted_answer = msg["content"].replace("\n", "<br>")
+
+            st.markdown(f"""
+            <div class="chat-bubble-bot">
+                <div style="font-weight:700; margin-bottom:0.6rem; color:#2dd4bf; font-size: 0.9rem;">
+                    ⚖️ LEGAL INFERENCE SYSTEM RESPONSE
                 </div>
-                """, unsafe_allow_html=True)
-
-        # Pre-fill input value if chosen from the sample tab
-        input_placeholder = "Input compliance queries or operational labor scenarios..."
-        if st.session_state.active_question:
-            question = st.chat_input(input_placeholder, key="active_chat_input")
-            # If state was loaded externally, trigger immediate execution injection
-            st.session_state.active_question = None
-        else:
-            question = st.chat_input(input_placeholder)
-
-    with right:
-        st.markdown("<h4 style='margin-top:0px; color:#f8fafc;'>📚 Document Evidence Matrix</h4>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size:0.85rem; color:#64748b;'>Real-time source alignment across mathematical vectors.</p>", unsafe_allow_html=True)
-
-        # Pull chunks configuration dynamically from the session history state
-        if st.session_state.messages and st.session_state.messages[-1]["role"] == "assistant":
-            last_bot = st.session_state.messages[-1]
-        else:
-            last_bot = None
-
-        if last_bot and "chunks" in last_bot:
-            for i, chunk in enumerate(last_bot["chunks"], 1):
-                score_percentage = int(chunk["hybrid_score"] * 100)
-                st.markdown(f"""
-                <div class="chunk-card">
-                    <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                        <span class="chunk-label" style="flex-grow:1;">DOCUMENT FRACTION #{i}</span>
-                        <span class="chunk-score">Match Rate: {score_percentage}%</span>
-                    </div>
-                    <div style="color:#64748b; margin-top:0.4rem; font-size:0.8rem; font-weight:600;">
-                        📍 Source Reference: {chunk['source']}
-                    </div>
-                    <div class="chunk-text">
-                        "{chunk['text']}"
-                    </div>
+                <div>{formatted_answer}</div>
+                <div style="margin-top:0.8rem; color:#64748b; font-size:0.75rem;">
+                    Response time: {msg.get("response_time", 0):.2f}s
                 </div>
-                """, unsafe_allow_html=True)
-        else:
-            st.markdown("""
-            <div style="border: 1px dashed rgba(255,255,255,0.08); padding: 2rem; border-radius:16px; text-align:center; color:#64748b; font-size:0.9rem; margin-top:1rem;">
-                No active calculations processed. Input query parameters to verify underlying statutory references.
             </div>
             """, unsafe_allow_html=True)
 
-# ─────────────────────────────────────────────────────────────
-# TAB: SAMPLE QUERIES
-# ─────────────────────────────────────────────────────────────
+            with st.expander("📚 View retrieved document chunks for this answer"):
+                render_chunks(msg.get("chunks", []))
 
-with examples_tab:
-    st.markdown("### 💡 Interactive Legal Scenarios")
-    st.markdown("Select an industry example below to quickly route and process its statutory evaluation.")
-    
-    ex_col1, ex_col2, ex_col3 = st.columns(3)
-    
-    with ex_col1:
-        st.markdown("<div style='color:#2dd4bf; font-weight:700; margin-bottom:0.5rem;'>📋 Leave & Gratuity</div>", unsafe_allow_html=True)
-        q1 = "How is end-of-service gratuity calculated under the new law?"
-        q2 = "What are the rules for annual leave pay when resigning?"
-        if st.button(q1, key="btn_q1", use_container_width=True):
-            st.session_state.active_question = q1
-            question = q1
-        if st.button(q2, key="btn_q2", use_container_width=True):
-            st.session_state.active_question = q2
-            question = q2
-            
-    with ex_col2:
-        st.markdown("<div style='color:#4f46e5; font-weight:700; margin-bottom:0.5rem;'>💼 Employment Contracts</div>", unsafe_allow_html=True)
-        q3 = "What is the maximum duration for a limited contract?"
-        q4 = "Are non-compete clauses legally binding in the UAE?"
-        if st.button(q3, key="btn_q3", use_container_width=True):
-            st.session_state.active_question = q3
-            question = q3
-        if st.button(q4, key="btn_q4", use_container_width=True):
-            st.session_state.active_question = q4
-            question = q4
+    user_question = st.chat_input("Input compliance queries or operational labour scenarios...")
 
-    with ex_col3:
-        st.markdown("<div style='color:#a5b4fc; font-weight:700; margin-bottom:0.5rem;'>⚠️ Termination Rules</div>", unsafe_allow_html=True)
-        q5 = "What is the legal minimum notice period for termination?"
-        q6 = "What qualifies as arbitrary dismissal under Decree-Law No.33?"
-        if st.button(q5, key="btn_q5", use_container_width=True):
-            st.session_state.active_question = q5
-            question = q5
-        if st.button(q6, key="btn_q6", use_container_width=True):
-            st.session_state.active_question = q6
-            question = q6
+    if user_question:
+        process_question(user_question)
+
 
 # ─────────────────────────────────────────────────────────────
-# CORE ENGINE RUNTIME INTERSECT
-# ─────────────────────────────────────────────────────────────
-
-if question:
-    st.session_state.messages.append({"role": "user", "content": question})
-    
-    with st.spinner("Executing retrieval metrics across pipeline vectors..."):
-        start_timer = time.time()
-        pipeline_result, _ = get_rag_answer(question)
-        end_timer = time.time() - start_timer
-    
-    # Track performance logs across historical runtime states
-    current_count = st.session_state.question_count
-    st.session_state.avg_response_time = (
-        (st.session_state.avg_response_time * current_count + end_timer) / (current_count + 1)
-    )
-    st.session_state.question_count += 1
-    
-    st.session_state.messages.append({
-        "role": "assistant",
-        "content": pipeline_result["answer"],
-        "chunks": pipeline_result["context_chunks"]
-    })
-    st.rerun()
-
-# ─────────────────────────────────────────────────────────────
-# TAB: ARCHITECTURE EXPLAINER & PIPELINE DATA VISUALIZATION
+# PIPELINE TAB
 # ─────────────────────────────────────────────────────────────
 
 with code_tab:
     st.markdown("### 📊 Application Infrastructure & Engine Logic")
-    st.markdown("This blueprint outlines the visual execution pipeline for the system's runtime stack.")
-    
+    st.markdown("This blueprint outlines the visual execution pipeline for the system runtime stack.")
+
     v_col1, v_col2 = st.columns([1, 1])
-    
+
     with v_col1:
         st.markdown("<div class='architecture-box'>", unsafe_allow_html=True)
         st.markdown("<h4>🔄 RAG Operational Pipeline Flow</h4>", unsafe_allow_html=True)
-        
+
         st.markdown("""
         <div class='flow-step'>
             <span class='flow-step-num'>1. Input</span> 
-            <strong>User Query Capture:</strong> Raw query text is passed into the processing interface loop.
+            <strong>User Query Capture:</strong> The user question is passed into the processing pipeline.
         </div>
         <div class='flow-step'>
             <span class='flow-step-num'>2. Vectorization</span> 
-            <strong>Embedding Transformation:</strong> Text transforms via <code>MiniLM-L6-v2</code> into dense numerical spaces.
+            <strong>Embedding Transformation:</strong> Text is transformed using <code>MiniLM-L6-v2</code>.
         </div>
         <div class='flow-step'>
             <span class='flow-step-num'>3. Hybrid Retrieval</span> 
-            <strong>Dual Index Query:</strong> System targets parallel channels across ChromaDB (Dense) & BM25 (Sparse).
+            <strong>Dual Index Query:</strong> ChromaDB dense search and BM25 sparse search retrieve legal chunks.
         </div>
         <div class='flow-step'>
             <span class='flow-step-num'>4. Reranking</span> 
-            <strong>Reciprocal Rank Fusion:</strong> Scores scale into normalized indexes via the weighted parameters matrix.
+            <strong>Hybrid Fusion:</strong> Scores are combined into a final ranked evidence list.
         </div>
         <div class='flow-step'>
             <span class='flow-step-num'>5. Generation</span> 
-            <strong>Contextual Prompting:</strong> Gemini 2.5 Flash compiles final structured answers based entirely on legal fragments.
+            <strong>Contextual Prompting:</strong> Gemini generates the final legal answer using retrieved fragments.
         </div>
         """, unsafe_allow_html=True)
+
         st.markdown("</div>", unsafe_allow_html=True)
 
     with v_col2:
         st.markdown("<div class='architecture-box'>", unsafe_allow_html=True)
-        st.markdown("<h4>📐 Core Code Algorithms & Math Profiles</h4>", unsafe_allow_html=True)
-        
-        st.markdown("##### Hybrid Scoring Protocol Engine")
+        st.markdown("<h4>📐 Core Code Algorithms</h4>", unsafe_allow_html=True)
+
+        st.markdown("##### Hybrid Scoring Protocol")
         st.code("""
-# Internal algorithmic scoring alignment logic
 def compute_hybrid_fusion(semantic_score, bm25_score, alpha=0.7):
-    # Combines vector distance matching with raw keyword index tracking
     return (alpha * semantic_score) + ((1.0 - alpha) * bm25_score)
         """, language="python")
 
-        st.markdown("##### Streamlit Structural Pipeline Router")
+        st.markdown("##### Message and Evidence Binding")
         st.code("""
-# App State routing map 
-if user_input_token:
-    st.session_state.messages.append({"role": "user", "content": user_input_token})
-    payload, failure = get_rag_answer(user_input_token)
-    st.session_state.messages.append({
-        "role": "assistant",
-        "content": payload["answer"],
-        "chunks": payload["context_chunks"]
-    })
-    st.rerun()
+st.session_state.messages.append({
+    "role": "assistant",
+    "content": pipeline_result["answer"],
+    "chunks": pipeline_result["context_chunks"]
+})
+
+# Each answer keeps its own chunks.
+for msg in st.session_state.messages:
+    if msg["role"] == "assistant":
+        display_answer(msg["content"])
+        display_chunks(msg["chunks"])
         """, language="python")
+
         st.markdown("</div>", unsafe_allow_html=True)
 
+
 # ─────────────────────────────────────────────────────────────
-# TAB: SYSTEM METADATA AND ARCHIVAL SPECIFICATIONS
+# ABOUT TAB
 # ─────────────────────────────────────────────────────────────
 
 with about_tab:
@@ -682,33 +637,42 @@ with about_tab:
     st.markdown("Advanced system specs for the hybrid verification layer:")
 
     a1, a2 = st.columns(2)
+
     with a1:
         st.markdown("""
         ### 🔍 Dense vs Sparse Hybrid Weights
-        The architecture enforces unified dual retrieval strategies:
-        * **Semantic Retrieval Weight ($\alpha$):** `0.70`
-        * **Keyword Match Frequency Weight ($1 - \alpha$):** `0.30`
-        
-        ### 🎯 Hallucination Countermeasures
-        * **Strict Isolation Constraints:** System blocks text compilation outside context windows.
-        * **Document Cross-Tracing:** Retained fragments append unique tracking metrics (`hybrid_score`).
+
+        The architecture uses dual retrieval strategies:
+
+        - **Semantic Retrieval Weight:** `0.70`
+        - **Keyword Match Weight:** `0.30`
+
+        ### 🎯 Hallucination Reduction
+
+        - Answers are generated from retrieved legal fragments.
+        - Each response stores its own evidence chunks.
+        - The UI no longer mixes chunks from different questions.
         """)
 
     with a2:
         st.markdown("""
-        ### 📦 Code-Base Profile & Inventories
-        * **Chroma Vector Database Engine:** Persistent local indexing pipeline.
-        * **Tokenizer Structure:** Sequence maps tailored to verify alphanumeric configurations.
-        * **Inference Runtime Layer:** Streamlined processing logic ensures highly responsive UI feedback loops.
+        ### 📦 Code-Base Profile
+
+        - **Vector Database:** ChromaDB
+        - **Sparse Retrieval:** BM25
+        - **Embedding Model:** MiniLM-L6-v2
+        - **Generation Model:** Gemini 2.5 Flash
+        - **Interface:** Streamlit
         """)
 
+
 # ─────────────────────────────────────────────────────────────
-# VISUAL FOOTER PLATFORM
+# FOOTER
 # ─────────────────────────────────────────────────────────────
 
 st.markdown("""
 <hr style="border: 0; height: 1px; background: rgba(255,255,255,0.06); margin-top: 3rem;">
 <div style="text-align:center; color:#475569; padding:0.5rem; font-size:0.8rem; font-weight:600; letter-spacing:0.05em;">
-    NLP APPLICATIONS INFRASTRUCTURE · PRODUCTION METRICS COMPLIANT · 2026
+    NLP APPLICATIONS INFRASTRUCTURE · HYBRID RAG SYSTEM · 2026
 </div>
 """, unsafe_allow_html=True)
