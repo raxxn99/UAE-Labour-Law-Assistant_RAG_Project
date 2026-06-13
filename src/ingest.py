@@ -6,7 +6,7 @@ import chromadb
 # CONFIGURATION (Edit these for D2 experiments)
 CHUNK_SIZE = 500
 CHUNK_OVERLAP = 100
-EMBEDDING_MODEL = 'all-MiniLM-L6-v2'
+EMBEDDING_MODEL = 'multi-qa-MiniLM-L6-cos-v1'  # D2: upgraded from all-MiniLM-L6-v2 after embedding experiment
 CHROMA_DB_PATH = 'chroma_db'          # Now actually used ✅
 
 def load_documents(data_dir):
