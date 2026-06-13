@@ -1,0 +1,320 @@
+﻿Question No.,Question,Prompt Type,Model Used,Top Retrieved Source,Top Retrieval Score,All Retrieved Sources,Generated Answer,Answer Word Count,Mentions Source/Citation,Detects Insufficient Context,API Error,Manual Relevance Score (1-5),Manual Correctness Score (1-5),Manual Grounding Score (1-5),"Manual Hallucination Score (1-5, lower is better)",Manual Notes / Issues
+1,What is the minimum annual leave in the UAE?,Original,gemini-2.5-flash,Annual leave _ The Official Platform of the UAE Government.txt,0.7205,"1. Annual leave _ The Official Platform of the UAE Government.txt | chunk 9 | score 0.7205
+2. Annual leave _ The Official Platform of the UAE Government.txt | chunk 11 | score 0.7023
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 632 | score 0.419
+4. Remote Work Guide in the Private Sector - EN.txt | chunk 1858 | score 0.4067
+5. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 631 | score 0.4059","The minimum annual leave entitlement in the UAE is 2 days of leave for each month of service, applicable when the period of service exceeds six months but is less than one year (Source: Annual leave _ The Official Platform of the UAE Government.txt, Remote Work Guide in the Private Sector - EN.txt).
+
+For employees who have completed one year of service, the entitlement is a fully paid annual leave of 30 days (Source: Annual leave _ The Official Platform of the UAE Government.txt, Remote Work Guide in the Private Sector - EN.txt).",93,Yes,No,,,,,,
+1,What is the minimum annual leave in the UAE?,Strict,gemini-2.5-flash,Annual leave _ The Official Platform of the UAE Government.txt,0.7205,"1. Annual leave _ The Official Platform of the UAE Government.txt | chunk 9 | score 0.7205
+2. Annual leave _ The Official Platform of the UAE Government.txt | chunk 11 | score 0.7023
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 632 | score 0.419
+4. Remote Work Guide in the Private Sector - EN.txt | chunk 1858 | score 0.4067
+5. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 631 | score 0.4059","Employees are entitled to 2 days of leave for each month of service if their period of service exceeds six months but is less than one year. Employees become entitled to annual leave after completing six months of service. Therefore, the minimum annual leave an employee is entitled to upon becoming eligible is 12 days (2 days per month for six months).",62,No,No,,,,,,
+1,What is the minimum annual leave in the UAE?,Citational,gemini-2.5-flash,Annual leave _ The Official Platform of the UAE Government.txt,0.7205,"1. Annual leave _ The Official Platform of the UAE Government.txt | chunk 9 | score 0.7205
+2. Annual leave _ The Official Platform of the UAE Government.txt | chunk 11 | score 0.7023
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 632 | score 0.419
+4. Remote Work Guide in the Private Sector - EN.txt | chunk 1858 | score 0.4067
+5. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 631 | score 0.4059","- Answer: Employees are entitled to annual leave upon completing six months of service. For service exceeding six months but less than one year, the employee is entitled to two days of leave for each month of service. If an employee has completed one year of service, they are entitled to a fully paid annual leave of 30 days.
+- Evidence: Annual leave _ The Official Platform of the UAE Government.txt, Chunk Index: 11; Annual leave _ The Official Platform of the UAE Government.txt, Chunk Index: 9; Remote Work Guide in the Private Sector - EN.txt, Chunk Index: 1858.",99,Yes,No,,,,,,
+1,What is the minimum annual leave in the UAE?,Simple,gemini-2.5-flash,Annual leave _ The Official Platform of the UAE Government.txt,0.7205,"1. Annual leave _ The Official Platform of the UAE Government.txt | chunk 9 | score 0.7205
+2. Annual leave _ The Official Platform of the UAE Government.txt | chunk 11 | score 0.7023
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 632 | score 0.419
+4. Remote Work Guide in the Private Sector - EN.txt | chunk 1858 | score 0.4067
+5. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 631 | score 0.4059","Based on the provided information:
+
+Employees become entitled to annual leave after completing six months of service. For service that exceeds six months but is less than one year, employees are entitled to 2 days of leave for each month they have worked.
+
+Therefore, for an employee who has completed six months of service, the minimum annual leave they would be entitled to is 12 days (2 days x 6 months).",71,No,No,,,,,,
+2,How is end of service gratuity calculated?,Original,gemini-2.5-flash,Awareness Guide for New Employers Companies - EN_639011571513592816.txt,0.8787,"1. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 28 | score 0.8787
+2. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 1032 | score 0.7703
+3. End of service benefits for workers in the private sector _ The Official Platform of the UAE Government.txt | chunk 386 | score 0.7
+4. End of service benefits for workers in the private sector _ The Official Platform of the UAE Government.txt | chunk 390 | score 0.6645
+5. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 1080 | score 0.5278","The end-of-service gratuity is calculated based on the employee's last basic wage or basic salary received. It does not include allowances such as housing, transportation, utilities, or furniture.
+
+For foreign full-time workers who have completed one or more years of continuous service, the gratuity is calculated according to the basic wage (Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations, Article 51; End of service benefits for workers in the private sector _ The Official Platform of the UAE Government; Awareness Guide for New Employers Companies - EN_639011571513592816.txt). Workers are entitled to gratuity for fractions of a year, proportionate to the time served, provided they have completed one year of continuous service (End of service benefits for workers in the private sector _ The Official Platform of the UAE Government).
+
+For national workers, the end-of-service gratuity is calculated in accordance with the legislation regulating pensions and social security in force in the State (Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations, Article 51; Awareness Guide for New Employers Companies - EN_639011571513592816.txt).
+
+In all cases, the total gratuity shall not exceed the wage of 2 years (End of service benefits for workers in the private sector _ The Official Platform of the UAE Government).",210,Yes,No,,,,,,
+2,How is end of service gratuity calculated?,Strict,gemini-2.5-flash,Awareness Guide for New Employers Companies - EN_639011571513592816.txt,0.8787,"1. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 28 | score 0.8787
+2. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 1032 | score 0.7703
+3. End of service benefits for workers in the private sector _ The Official Platform of the UAE Government.txt | chunk 386 | score 0.7
+4. End of service benefits for workers in the private sector _ The Official Platform of the UAE Government.txt | chunk 390 | score 0.6645
+5. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 1080 | score 0.5278","The end-of-service gratuity for a foreign full-time worker is calculated according to the basic wage, specifically the last basic wage received, and does not include allowances such as housing, transportation, utilities, or furniture.
+
+For a national worker, the end-of-service gratuity is calculated in accordance with the legislation regulating pensions and social security in force in the State.
+
+Workers are entitled to gratuity for fractions of a year, proportionate to the time served, provided they have completed one year of continuous service. Days of unpaid absence are not included in service calculations. The total gratuity shall not exceed the wage of 2 years.
+
+Subject to specific provisions, the employer may calculate the end-of-service gratuity in accordance with the provisions of the indefinite-term employment contract stipulated in Federal Law No. (8) of 1980.",131,No,No,,,,,,
+2,How is end of service gratuity calculated?,Citational,gemini-2.5-flash,Awareness Guide for New Employers Companies - EN_639011571513592816.txt,0.8787,"1. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 28 | score 0.8787
+2. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 1032 | score 0.7703
+3. End of service benefits for workers in the private sector _ The Official Platform of the UAE Government.txt | chunk 386 | score 0.7
+4. End of service benefits for workers in the private sector _ The Official Platform of the UAE Government.txt | chunk 390 | score 0.6645
+5. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 1080 | score 0.5278","- Answer: The end-of-service gratuity is calculated based on the employee's last basic wage received. It is calculated on the basis of the last wage the worker was entitled to, specifically the basic salary, and does not include allowances such as housing, transportation, utilities, or furniture.
+    *   For foreign full-time workers, if they have completed one or more years of continuous service, they are entitled to a gratuity calculated according to their basic wage. Workers are entitled to gratuity for fractions of a year, proportionate to the time served, provided they have completed one year of continuous service. Days of unpaid absence are not included in service calculations.
+    *   National workers are entitled to an end-of-service gratuity upon the end of their service in accordance with the legislation regulating pensions and social security in force in the State.
+    *   In all cases, the total gratuity shall not exceed the wage of 2 years.
+
+- Evidence:
+    *   Awareness Guide for New Employers Companies - EN_639011571513592816.txt, Chunk 28
+    *   Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt, Chunk 1032
+    *   End of service benefits for workers in the private sector _ The Official Platform of the UAE Government.txt, Chunk 386
+    *   End of service benefits for workers in the private sector _ The Official Platform of the UAE Government.txt, Chunk 390",223,Yes,No,,,,,,
+2,How is end of service gratuity calculated?,Simple,gemini-2.5-flash,Awareness Guide for New Employers Companies - EN_639011571513592816.txt,0.8787,"1. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 28 | score 0.8787
+2. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 1032 | score 0.7703
+3. End of service benefits for workers in the private sector _ The Official Platform of the UAE Government.txt | chunk 386 | score 0.7
+4. End of service benefits for workers in the private sector _ The Official Platform of the UAE Government.txt | chunk 390 | score 0.6645
+5. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 1080 | score 0.5278","Here's how end-of-service gratuity is calculated:
+
+For **foreign full-time workers**:
+*   It's calculated based on your **last basic wage** received.
+*   It **does not include** any allowances like housing, transportation, utilities, or furniture.
+*   Days you were absent without pay are **not included** when calculating your service period.
+*   You can receive gratuity for fractions of a year, provided you have completed at least one year of continuous service.
+*   The total gratuity you receive **cannot be more than** the equivalent of two years' wages.
+
+For **national employees/workers**:
+*   Your end-of-service gratuity is calculated according to the specific laws that cover **pensions and social security** in the State.",108,No,No,,,,,,
+3,What are the rules for probation period?,Original,gemini-2.5-flash,Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt,0.7233,"1. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 901 | score 0.7233
+2. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 822 | score 0.6809
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 786 | score 0.6595
+4. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 872 | score 0.4422
+5. Full Time Employment Contract  Non-UAE Final.txt | chunk 1729 | score 0.44","The rules for the probation period are as follows:
+
+*   **Purpose:** The probation period allows the employer to evaluate the worker's performance and enables the worker to become familiar with job duties and the work environment. Based on this, it is determined whether the employment contract will continue or be terminated (Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations, Chunk 4).
+
+*   **Maximum Duration:** The probation period cannot exceed six (6) months from the date of commencing work (Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations, Article 9; Executive Regulations Of Human Resources Law in the Federal Government, Article 5, Article 6). A specific employment contract may set it as a three (3) month period, extendable by a further three (3) months (Full Time Employment Contract Non-UAE Final, Article 10).
+
+*   **Extension:** For Federal Government employees, the six-month probation period may be extended for three months (Executive Regulations Of Human Resources Law in the Federal Government, Article 5, Article 6).
+
+*   **Termination by Employer during Probation:**
+    *   Under the Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations (Article 9), the employer may terminate the worker's service during probation after notifying the worker in writing at least fourteen (14) days prior to the specified termination date.
+    *   For Federal Government employees (Executive Regulations Of Human Resources Law in the Federal Government, Article 5, Article 6), the employer may terminate service after serving a five working-day notice.
+
+*   **Resignation by Employee during Probation:**
+    *   For Federal Government employees (Executive Regulations Of Human Resources Law in the Federal Government, Article 5, Article 6), the employee may resign during the probation period after notifying the employer by a similar (five working-day) notice on the date set for resignation.",296,Yes,No,,,,,,
+3,What are the rules for probation period?,Strict,gemini-2.5-flash,Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt,0.7233,"1. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 901 | score 0.7233
+2. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 822 | score 0.6809
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 786 | score 0.6595
+4. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 872 | score 0.4422
+5. Full Time Employment Contract  Non-UAE Final.txt | chunk 1729 | score 0.44","The rules for a probation period are as follows:
+
+*   **Duration:**
+    *   It may not exceed six (6) months as of the date of commencing work, according to Federal Decree by Law No. (33) of 2021.
+    *   For the Federal Government, it is a six-month period as of the date of commencement, which may be extended for three months.
+    *   A full-time employment contract example shows a three (3) month probation period, extendible to a further three (3) months.
+
+*   **Purpose:**
+    *   It enables the employer to evaluate the worker's performance and the worker to become familiar with job duties and the work environment.
+    *   Based on this, it determines whether the employment contract shall be continued or terminated.
+
+*   **Termination by Employer during Probation:**
+    *   Under Federal Decree by Law No. (33) of 2021, the employer may terminate service after notifying the worker in writing at least fourteen (14) days prior to the date specified for termination.
+    *   For the Federal Government (Executive Regulations), the employer may terminate service after serving a five-working day notice.
+
+*   **Resignation by Employee during Probation (Federal Government - Executive Regulations):**
+    *   The employee may resign after notifying the employer by a similar notice (five working days) on the date set for resignation.",209,No,No,,,,,,
+3,What are the rules for probation period?,Citational,gemini-2.5-flash,Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt,0.7233,"1. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 901 | score 0.7233
+2. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 822 | score 0.6809
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 786 | score 0.6595
+4. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 872 | score 0.4422
+5. Full Time Employment Contract  Non-UAE Final.txt | chunk 1729 | score 0.44","- Answer:
+A probation period is a period required by an employer to evaluate a worker's performance and allows the worker to become familiar with job duties and the work environment, to determine if the employment contract will continue or be terminated.
+- Evidence: Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt (Chunk 872)
+
+For a general labour relationship, the employer may appoint a worker under a probation period not exceeding six months from the date of commencing work. During this period, the employer may terminate the worker's service by notifying the worker in writing at least fourteen days prior to the specified termination date.
+- Evidence: Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt (Chunk 901)
+
+In the context of Executive Regulations of Human Resources Law in the Federal Government, a probation period is six months from the commencement date, which may be extended for three months. During this period, the First Party (employer) may terminate the service of the Second Party (employee) after serving a five working-day notice. The Second Party may resign during probation by notifying the First Party with a similar notice on the date set for resignation.
+- Evidence: Executive Regulations Of Human Resources Law in the Federal Government.txt (Chunk 822, Chunk 786)
+
+A specific Full Time Employment Contract might state a three-month probation period commencing on the contract's start date, extendible to a further three months. During this time, the First Party will evaluate the Second Party’s performance and confirm or terminate employment.
+- Evidence: Full Time Employment Contract Non-UAE Final.txt (Chunk 1729)",267,Yes,No,,,,,,
+3,What are the rules for probation period?,Simple,gemini-2.5-flash,Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt,0.7233,"1. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 901 | score 0.7233
+2. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 822 | score 0.6809
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 786 | score 0.6595
+4. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 872 | score 0.4422
+5. Full Time Employment Contract  Non-UAE Final.txt | chunk 1729 | score 0.44","Here are the rules for probation periods based on the available documents:
+
+The probation period is a time when the employer evaluates the employee's performance and the employee gets familiar with the job duties and the work environment. A decision is then made whether to continue the employment contract or end it.
+
+The rules for probation periods can vary depending on the specific law or contract:
+
+1.  **Under the Federal Labour Law (Federal Decree by Law No. 33 of 2021):**
+    *   The probation period cannot be longer than **six (6) months** from when the employee starts work.
+    *   If the employer decides to end the employee's service during probation, they must give the employee a written notice at least **fourteen (14) days** before the termination date.
+
+2.  **For Federal Government Employees (Executive Regulations):**
+    *   The probation period is **six (6) months** from the start date.
+    *   This probation period can be extended for an additional **three (3) months**.
+    *   If the employer decides to end the service during probation, they must give a **five working-day notice**.
+    *   If the employee decides to resign during probation, they must also give a similar **five working-day notice**.
+
+3.  **For Specific Employment Contracts (as seen in one example document):**
+    *   Some contracts may specify a **three (3) month** probation period.
+    *   This period can be extended for a further **three (3) months** (making a total of six months).
+    *   During this time, the employer will evaluate the employee's performance to decide whether to confirm their employment or end it. This specific document does not detail the notice period for termination during probation.
+
+In summary, the maximum probation period is generally six months, but for Federal Government employees, it can be extended up to nine months. The notice period for termination during probation also varies, being 14 days under the general Federal Labour Law and 5 working days for Federal Government employees. Some specific contracts might have different initial probation lengths and extensions.",328,No,No,,,,,,
+4,What is the maximum working hours per week?,Original,gemini-2.5-flash,Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt,0.7533,"1. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 935 | score 0.7533
+2. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1206 | score 0.7182
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 467 | score 0.7065
+4. Remote Work Guide in the Private Sector - EN.txt | chunk 1856 | score 0.6937
+5. Full Time Employment Contract  Non-UAE Final.txt | chunk 1721 | score 0.6292","The maximum normal working hours for workers shall be forty-eight (48) hours per week.
+
+This information is stated in:
+*   Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt (Article 17)
+*   Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt (Article 18)
+*   Remote Work Guide in the Private Sector - EN.txt
+*   Full Time Employment Contract Non-UAE Final.txt (Article 8)",71,Yes,No,,,,,,
+4,What is the maximum working hours per week?,Strict,gemini-2.5-flash,Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt,0.7533,"1. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 935 | score 0.7533
+2. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1206 | score 0.7182
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 467 | score 0.7065
+4. Remote Work Guide in the Private Sector - EN.txt | chunk 1856 | score 0.6937
+5. Full Time Employment Contract  Non-UAE Final.txt | chunk 1721 | score 0.6292",The maximum normal working hours for workers shall be forty-eight (48) hours per week.,14,No,No,,,,,,
+4,What is the maximum working hours per week?,Citational,gemini-2.5-flash,Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt,0.7533,"1. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 935 | score 0.7533
+2. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1206 | score 0.7182
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 467 | score 0.7065
+4. Remote Work Guide in the Private Sector - EN.txt | chunk 1856 | score 0.6937
+5. Full Time Employment Contract  Non-UAE Final.txt | chunk 1721 | score 0.6292","- Answer: The maximum normal working hours for workers shall be forty-eight (48) hours per week.
+- Evidence: Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt [935], Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt [1206], Remote Work Guide in the Private Sector - EN.txt [1856], Full Time Employment Contract Non-UAE Final.txt [1721]",64,Yes,No,,,,,,
+4,What is the maximum working hours per week?,Simple,gemini-2.5-flash,Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt,0.7533,"1. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 935 | score 0.7533
+2. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1206 | score 0.7182
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 467 | score 0.7065
+4. Remote Work Guide in the Private Sector - EN.txt | chunk 1856 | score 0.6937
+5. Full Time Employment Contract  Non-UAE Final.txt | chunk 1721 | score 0.6292","Based on the available documents, the maximum normal working hours for employees is 48 hours per week.",17,No,No,,,,,,
+5,How can an employee file a labour complaint?,Original,gemini-2.5-flash,Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt,0.6173,"1. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1558 | score 0.6173
+2. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1578 | score 0.5675
+3. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1575 | score 0.4087
+4. Resolving labour disputes _ The Official Platform of the UAE Government.txt | chunk 1897 | score 0.3983
+5. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1577 | score 0.3854","An employee can file a labour complaint by submitting it to the Ministry. The Ministry will then examine the complaint and take the necessary measures to settle the dispute amicably. This applies if the worker disputes any of the rights accrued to them under the Decree-Law.
+
+For collective labour disputes involving all or a group of the establishment's workers, the complaint shall be filed through the channels specified by the Ministry, and the type and amount of the claims shall be stated.
+
+Source: Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments, Article (31) and Article (32).",103,Yes,No,,,,,,
+5,How can an employee file a labour complaint?,Strict,gemini-2.5-flash,Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt,0.6173,"1. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1558 | score 0.6173
+2. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1578 | score 0.5675
+3. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1575 | score 0.4087
+4. Resolving labour disputes _ The Official Platform of the UAE Government.txt | chunk 1897 | score 0.3983
+5. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1577 | score 0.3854","An employee can submit a complaint to the Ministry if they dispute any rights accrued to them under the Decree-Law. The complaint should be filed through channels specified by the Ministry, and the type and amount of the claims shall be stated. The Ministry will examine the complaint and take necessary measures to settle the dispute amicably.",57,No,No,,,,,,
+5,How can an employee file a labour complaint?,Citational,gemini-2.5-flash,Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt,0.6173,"1. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1558 | score 0.6173
+2. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1578 | score 0.5675
+3. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1575 | score 0.4087
+4. Resolving labour disputes _ The Official Platform of the UAE Government.txt | chunk 1897 | score 0.3983
+5. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1577 | score 0.3854","- Answer: An employee can file a complaint with the Ministry if they dispute any of the rights accrued to them under the Decree-Law. The Ministry will then examine the complaint and take the necessary measures to settle the dispute amicably.
+- Evidence: Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt, Chunk 3",60,Yes,No,,,,,,
+5,How can an employee file a labour complaint?,Simple,gemini-2.5-flash,Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt,0.6173,"1. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1558 | score 0.6173
+2. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1578 | score 0.5675
+3. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1575 | score 0.4087
+4. Resolving labour disputes _ The Official Platform of the UAE Government.txt | chunk 1897 | score 0.3983
+5. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1577 | score 0.3854","An employee can file a labour complaint with the Ministry if they have a dispute about any of their rights under the law. These complaints should be submitted through the specific channels specified by the Ministry.
+
+It's also important to note that if an employee receives a penalty, they have the right to file a grievance claim directly with the company's management about that penalty.",65,No,No,,,,,,
+6,Can an employer terminate an employee without notice?,Original,gemini-2.5-flash,Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt,0.6981,"1. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1953 | score 0.6981
+2. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1963 | score 0.6969
+3. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1969 | score 0.6877
+4. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 735 | score 0.5897
+5. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1954 | score 0.4168","Yes, an employer may terminate an employee without notice. This is mentioned in Article 44 of the UAE Labour Law, for instance, if the employee adopts a false identity or submits forged documents or certificates (Source: Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt).",50,Yes,No,,,,,,
+6,Can an employer terminate an employee without notice?,Strict,gemini-2.5-flash-lite,Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt,0.6981,"1. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1953 | score 0.6981
+2. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1963 | score 0.6969
+3. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1969 | score 0.6877
+4. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 735 | score 0.5897
+5. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1954 | score 0.4168","Yes, an employer may terminate the services of an employee without notice under certain circumstances outlined in Article 44 of the UAE Labour Law. These circumstances include if the employee adopts a false identity or submits forged documents or certificates.",40,No,No,,,,,,
+6,Can an employer terminate an employee without notice?,Citational,gemini-2.5-flash,Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt,0.6981,"1. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1953 | score 0.6981
+2. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1963 | score 0.6969
+3. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1969 | score 0.6877
+4. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 735 | score 0.5897
+5. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1954 | score 0.4168","- Answer: Yes, an employer may terminate the services of an employee without notice under certain circumstances. These circumstances include if the employee adopts a false identity or submits forged documents or certificates.
+- Evidence: Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt, Chunk 1963",51,Yes,No,,,,,,
+6,Can an employer terminate an employee without notice?,Simple,gemini-2.5-flash-lite,Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt,0.6981,"1. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1953 | score 0.6981
+2. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1963 | score 0.6969
+3. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1969 | score 0.6877
+4. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 735 | score 0.5897
+5. Terminating employment contracts and arbitrary dismissal _ The Official Platform of the UAE Government.txt | chunk 1954 | score 0.4168","Yes, an employer can terminate an employee without notice in certain situations. This can happen if the employee uses a false identity or submits forged documents or certificates.",28,No,No,,,,,,
+7,What is the Wage Protection System?,Original,gemini-2.5-flash-lite,Awareness Guide for New Employers Companies - EN_639011571513592816.txt,0.7365,"1. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 57 | score 0.7365
+2. domestic-workers-employers-guide-en_638924949072877160.txt | chunk 340 | score 0.6968
+3. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 54 | score 0.6332
+4. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 55 | score 0.6243
+5. Wage Protection System (WPS).txt | chunk 1986 | score 0.5722","The Wage Protection System (WPS) ensures that employees receive their wages in full and on time. It allows employers to pay employee wages electronically through authorized banks, exchange houses, and financial institutions licensed by the Central Bank of the UAE. This system is an alternative to the end-of-service gratuity system and involves employers making monthly contributions to an investment fund. This information is found in the ""Awareness Guide for New Employers Companies"" and ""Wage Protection System (WPS).txt"".",77,Yes,No,,,,,,
+7,What is the Wage Protection System?,Strict,gemini-2.5-flash-lite,Awareness Guide for New Employers Companies - EN_639011571513592816.txt,0.7365,"1. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 57 | score 0.7365
+2. domestic-workers-employers-guide-en_638924949072877160.txt | chunk 340 | score 0.6968
+3. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 54 | score 0.6332
+4. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 55 | score 0.6243
+5. Wage Protection System (WPS).txt | chunk 1986 | score 0.5722","The Wage Protection System (WPS) ensures that employees receive their wages in full and on time. It allows employers to pay their employees’ wages electronically through banks, exchange houses, and financial institutions authorized and licensed by the Central Bank of the UAE to provide wage payment services.",47,No,No,,,,,,
+7,What is the Wage Protection System?,Citational,gemini-2.5-flash-lite,Awareness Guide for New Employers Companies - EN_639011571513592816.txt,0.7365,"1. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 57 | score 0.7365
+2. domestic-workers-employers-guide-en_638924949072877160.txt | chunk 340 | score 0.6968
+3. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 54 | score 0.6332
+4. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 55 | score 0.6243
+5. Wage Protection System (WPS).txt | chunk 1986 | score 0.5722","- Answer: The Wage Protection System (WPS) is a system that ensures employees receive their wages in full and on time. It allows employers to pay their employees' wages electronically through authorized banks, exchange houses, and financial institutions licensed by the Central Bank of the UAE.
+- Evidence: Awareness Guide for New Employers Companies - EN_639011571513592816.txt, Chunk 3
+- Evidence: Wage Protection System (WPS).txt, Chunk 5",66,Yes,No,,,,,,
+7,What is the Wage Protection System?,Simple,gemini-2.5-flash-lite,Awareness Guide for New Employers Companies - EN_639011571513592816.txt,0.7365,"1. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 57 | score 0.7365
+2. domestic-workers-employers-guide-en_638924949072877160.txt | chunk 340 | score 0.6968
+3. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 54 | score 0.6332
+4. Awareness Guide for New Employers Companies - EN_639011571513592816.txt | chunk 55 | score 0.6243
+5. Wage Protection System (WPS).txt | chunk 1986 | score 0.5722","The Wage Protection System (WPS) is a way for employers to pay their employees' wages electronically. It makes sure that employees get paid in full and on time. This is done through banks, exchange houses, and other financial institutions that are allowed to provide wage payment services.",47,No,No,,,,,,
+8,What are maternity leave rights in the UAE?,Original,gemini-2.5-flash-lite,Remote Work Guide in the Private Sector - EN.txt,0.7034,"1. Remote Work Guide in the Private Sector - EN.txt | chunk 1861 | score 0.7034
+2. Annual leave _ The Official Platform of the UAE Government.txt | chunk 11 | score 0.6566
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 618 | score 0.4396
+4. Annual leave _ The Official Platform of the UAE Government.txt | chunk 19 | score 0.4182
+5. Annual leave _ The Official Platform of the UAE Government.txt | chunk 9 | score 0.4128","Maternity leave in the UAE provides for 45 days of leave at full pay and 15 days at half pay. During pregnancy and maternity leave, employers are prohibited from terminating an employee's services or issuing a disciplinary warning. This information is based on the ""Remote Work Guide in the Private Sector - EN.txt"".",53,Yes,No,,,,,,
+8,What are maternity leave rights in the UAE?,Strict,gemini-2.5-flash-lite,Remote Work Guide in the Private Sector - EN.txt,0.7034,"1. Remote Work Guide in the Private Sector - EN.txt | chunk 1861 | score 0.7034
+2. Annual leave _ The Official Platform of the UAE Government.txt | chunk 11 | score 0.6566
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 618 | score 0.4396
+4. Annual leave _ The Official Platform of the UAE Government.txt | chunk 19 | score 0.4182
+5. Annual leave _ The Official Platform of the UAE Government.txt | chunk 9 | score 0.4128",The retrieved context does not provide enough information to answer this question.,12,No,Yes,,,,,,
+8,What are maternity leave rights in the UAE?,Citational,gemini-2.5-flash-lite,Remote Work Guide in the Private Sector - EN.txt,0.7034,"1. Remote Work Guide in the Private Sector - EN.txt | chunk 1861 | score 0.7034
+2. Annual leave _ The Official Platform of the UAE Government.txt | chunk 11 | score 0.6566
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 618 | score 0.4396
+4. Annual leave _ The Official Platform of the UAE Government.txt | chunk 19 | score 0.4182
+5. Annual leave _ The Official Platform of the UAE Government.txt | chunk 9 | score 0.4128",Evidence is insufficient.,3,Yes,Yes,,,,,,
+8,What are maternity leave rights in the UAE?,Simple,gemini-2.5-flash-lite,Remote Work Guide in the Private Sector - EN.txt,0.7034,"1. Remote Work Guide in the Private Sector - EN.txt | chunk 1861 | score 0.7034
+2. Annual leave _ The Official Platform of the UAE Government.txt | chunk 11 | score 0.6566
+3. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 618 | score 0.4396
+4. Annual leave _ The Official Platform of the UAE Government.txt | chunk 19 | score 0.4182
+5. Annual leave _ The Official Platform of the UAE Government.txt | chunk 9 | score 0.4128","In the UAE, maternity leave is paid. It includes 45 days at full pay and 15 days at half pay. Employers cannot fire or discipline an employee for being pregnant or taking maternity leave.",34,No,No,,,,,,
+9,What are the rules for remote work in the UAE?,Original,gemini-2.5-flash-lite,Remote Work Guide in the Private Sector - EN.txt,0.4797,"1. Remote Work Guide in the Private Sector - EN.txt | chunk 1844 | score 0.4797
+2. Work permits _ The Official Platform of the UAE Government.txt | chunk 2017 | score 0.4431
+3. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1151 | score 0.4314
+4. Work permits _ The Official Platform of the UAE Government.txt | chunk 2031 | score 0.422
+5. End of service benefits for workers in the private sector _ The Official Platform of the UAE Government.txt | chunk 393 | score 0.4198","Remote work is a flexible work arrangement that enables an employee to perform their professional duties, in whole or in part, outside the employer’s premises (Remote Work Guide in the Private Sector - EN.txt).",34,Yes,No,,,,,,
+9,What are the rules for remote work in the UAE?,Strict,gemini-2.5-flash-lite,Remote Work Guide in the Private Sector - EN.txt,0.4797,"1. Remote Work Guide in the Private Sector - EN.txt | chunk 1844 | score 0.4797
+2. Work permits _ The Official Platform of the UAE Government.txt | chunk 2017 | score 0.4431
+3. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1151 | score 0.4314
+4. Work permits _ The Official Platform of the UAE Government.txt | chunk 2031 | score 0.422
+5. End of service benefits for workers in the private sector _ The Official Platform of the UAE Government.txt | chunk 393 | score 0.4198","Remote Work is a flexible work arrangement that enables an employee to perform their professional duties, in whole or in part, outside the employer’s premises.",25,No,No,,,,,,
+9,What are the rules for remote work in the UAE?,Citational,gemini-2.5-flash-lite,Remote Work Guide in the Private Sector - EN.txt,0.4797,"1. Remote Work Guide in the Private Sector - EN.txt | chunk 1844 | score 0.4797
+2. Work permits _ The Official Platform of the UAE Government.txt | chunk 2017 | score 0.4431
+3. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1151 | score 0.4314
+4. Work permits _ The Official Platform of the UAE Government.txt | chunk 2031 | score 0.422
+5. End of service benefits for workers in the private sector _ The Official Platform of the UAE Government.txt | chunk 393 | score 0.4198",Evidence is insufficient.,3,Yes,Yes,,,,,,
+9,What are the rules for remote work in the UAE?,Simple,gemini-2.5-flash-lite,Remote Work Guide in the Private Sector - EN.txt,0.4797,"1. Remote Work Guide in the Private Sector - EN.txt | chunk 1844 | score 0.4797
+2. Work permits _ The Official Platform of the UAE Government.txt | chunk 2017 | score 0.4431
+3. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1151 | score 0.4314
+4. Work permits _ The Official Platform of the UAE Government.txt | chunk 2031 | score 0.422
+5. End of service benefits for workers in the private sector _ The Official Platform of the UAE Government.txt | chunk 393 | score 0.4198","Based on the provided text, remote work is a flexible work arrangement where an employee can do their job, all or part of it, from outside the employer's office. This is outlined in guidelines issued by the Ministry of Human Resources and Emiratization in the UAE.
+
+The text also mentions that to work in the UAE, you need a work permit from the Ministry, as per the law. The specific conditions and procedures for obtaining, renewing, or canceling these permits are detailed in the Implementing Regulation. A company's trade license must also be valid and free of violations for work permits to be issued.",104,Yes,No,,,,,,
+10,Can an employer reduce salary without employee consent?,Original,gemini-2.5-flash-lite,Executive Regulations Of Human Resources Law in the Federal Government.txt,0.598,"1. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 527 | score 0.598
+2. Cabinet Decision No. 106 of 2022 pertaining to the executive regulations of Federal Decree Law No. 9 of 2022.txt | chunk 129 | score 0.4159
+3. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1226 | score 0.3733
+4. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 951 | score 0.3636
+5. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 950 | score 0.3581",I cannot find this information in the available UAE Labour Law documents.,12,No,Yes,,,,,,
+10,Can an employer reduce salary without employee consent?,Strict,gemini-2.5-flash-lite,Executive Regulations Of Human Resources Law in the Federal Government.txt,0.598,"1. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 527 | score 0.598
+2. Cabinet Decision No. 106 of 2022 pertaining to the executive regulations of Federal Decree Law No. 9 of 2022.txt | chunk 129 | score 0.4159
+3. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1226 | score 0.3733
+4. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 951 | score 0.3636
+5. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 950 | score 0.3581",The retrieved context does not provide enough information to answer this question.,12,No,Yes,,,,,,
+10,Can an employer reduce salary without employee consent?,Citational,gemini-2.5-flash-lite,Executive Regulations Of Human Resources Law in the Federal Government.txt,0.598,"1. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 527 | score 0.598
+2. Cabinet Decision No. 106 of 2022 pertaining to the executive regulations of Federal Decree Law No. 9 of 2022.txt | chunk 129 | score 0.4159
+3. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1226 | score 0.3733
+4. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 951 | score 0.3636
+5. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 950 | score 0.3581","- Answer: An employer cannot reduce an employee's salary unless the employee agrees in writing.
+- Evidence: Executive Regulations Of Human Resources Law in the Federal Government.txt, Chunk Index: 527",30,Yes,No,,,,,,
+10,Can an employer reduce salary without employee consent?,Simple,gemini-2.5-flash-lite,Executive Regulations Of Human Resources Law in the Federal Government.txt,0.598,"1. Executive Regulations Of Human Resources Law in the Federal Government.txt | chunk 527 | score 0.598
+2. Cabinet Decision No. 106 of 2022 pertaining to the executive regulations of Federal Decree Law No. 9 of 2022.txt | chunk 129 | score 0.4159
+3. Federal Decree-Law No. 33 of 2021 Regarding the Regulation of Employment Relationship and its amendments_638990571068264034.txt | chunk 1226 | score 0.3733
+4. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 951 | score 0.3636
+5. Federal Decree by Law No. (33) of 2021 Concerning Regulating Labour Relations.txt | chunk 950 | score 0.3581","Based on the provided text, an employer cannot reduce an employee's gross salary unless the employee agrees to it in writing. This is stated in Chunk 1.",27,Yes,No,,,,,,
