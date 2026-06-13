@@ -16,7 +16,7 @@ COLLECTION_NAME = "uae_labour_law"
 
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 
-TOP_K = 5
+TOP_K = 5 # Number of chunks to retrieve for the RAG system // experiment test for D2 Top_K = 3,5,10,15.
 SEMANTIC_WEIGHT = 0.7
 KEYWORD_WEIGHT = 0.3
 
